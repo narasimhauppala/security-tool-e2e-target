@@ -1,4 +1,4 @@
-FROM python:3.9-slim-bullseye
+FROM python:3.11-slim
 
 LABEL org.opencontainers.image.source="https://github.com/narasimhauppala/security-tool-e2e-target"
 LABEL org.opencontainers.image.description="Security Tool company-style E2E target image"
