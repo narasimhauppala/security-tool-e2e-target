@@ -15,4 +15,6 @@ RUN python -m pip install --upgrade pip \
 
 COPY app /app/app
 
+EXPOSE 8080
+
 CMD ["python", "-m", "app.main"]
