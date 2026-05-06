@@ -1,0 +1,12 @@
+{
+  "name": "security-tool-e2e-target",
+  "version": "0.1.0",
+  "private": true,
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "lodash": "4.17.20"
+  }
+}
