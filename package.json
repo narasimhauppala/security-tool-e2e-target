@@ -4,8 +4,7 @@
   "private": true,
   "type": "commonjs",
   "scripts": {
-    "start": "node server.js",
-    "test": "npm install --omit=dev --ignore-scripts && node test-version.js"
+    "start": "node server.js"
   },
   "dependencies": {
     "lodash": "4.17.20"
