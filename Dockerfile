@@ -9,11 +9,11 @@ ENV PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
-COPY requirements.txt /app/requirements.txt
-RUN python -m pip install --upgrade pip \
-    && python -m pip install --no-cache-dir -r /app/requirements.txt
-
+COPY pyproject.toml /app/pyproject.toml
+COPY vendor /app/vendor
 COPY app /app/app
+RUN python -m pip install --upgrade pip \
+    && python -m pip install --no-cache-dir .
 
 EXPOSE 8080
 
