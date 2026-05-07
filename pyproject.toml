@@ -7,7 +7,7 @@ name = "security-tool-e2e-target"
 version = "0.1.0"
 requires-python = ">=3.11"
 dependencies = [
-    "requests==2.19.1",
+    "requests==2.33.0",
     "urllib3>=1.23,<3",
     "flask==1.0.2",
     "jinja2==2.10.1",
