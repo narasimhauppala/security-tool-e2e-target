@@ -4,15 +4,25 @@ import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import os
 
-import requests
-import urllib3
+import jinja2
+
+
+def _render_legacy_template() -> str:
+    from jinja2 import Environment, contextfilter
+
+    @contextfilter
+    def legacy_upper(context: object, value: str) -> str:
+        return value.upper()
+
+    env = Environment(autoescape=True)
+    env.filters["legacy_upper"] = legacy_upper
+    return env.from_string("{{ 'legacy'|legacy_upper }}").render()
 
 
 def _service_payload() -> dict[str, str]:
     return {
         "service": "security-tool-e2e-target",
-        "requests": requests.__version__,
-        "urllib3": urllib3.__version__,
+        "jinja2": jinja2.__version__,
         "status": "ok",
     }
 
@@ -21,6 +31,9 @@ class Handler(BaseHTTPRequestHandler):
     def do_GET(self) -> None:
         if self.path in {"/", "/livez", "/readyz", "/version"}:
             self._send_json(_service_payload())
+            return
+        if self.path == "/legacy-render":
+            self._send_json({"status": "ok", "rendered": _render_legacy_template()})
             return
         self._send_json({"status": "not_found", "path": self.path}, status=404)
 
