@@ -4,14 +4,12 @@ import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import os
 
-import requests
 import urllib3
 
 
 def _service_payload() -> dict[str, str]:
     return {
         "service": "security-tool-e2e-target",
-        "requests": requests.__version__,
         "urllib3": urllib3.__version__,
         "status": "ok",
     }
