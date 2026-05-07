@@ -1,5 +1,2 @@
-requests==2.19.1
-urllib3>=1.23,<3
-flask==1.0.2
-jinja2==2.10.1
-werkzeug==0.15.5
+Jinja2==2.11.3
+MarkupSafe==2.0.1

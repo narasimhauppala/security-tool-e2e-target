@@ -4,15 +4,17 @@ import json
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 import os
 
-import requests
-import urllib3
+from jinja2 import Environment
+
+_ENV = Environment(autoescape=True)
+_TEMPLATE = _ENV.from_string("{{ service }}:{{ status }}")
 
 
 def _service_payload() -> dict[str, str]:
+    rendered = _TEMPLATE.render(service="security-tool-e2e-target", status="ok")
     return {
         "service": "security-tool-e2e-target",
-        "requests": requests.__version__,
-        "urllib3": urllib3.__version__,
+        "jinja2_rendered": rendered,
         "status": "ok",
     }
 
