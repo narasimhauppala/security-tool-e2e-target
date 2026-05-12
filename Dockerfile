@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.12.1-slim-bookworm
 
 LABEL org.opencontainers.image.source="https://github.com/narasimhauppala/security-tool-e2e-target"
 LABEL org.opencontainers.image.description="Security Tool company-style E2E target image"
